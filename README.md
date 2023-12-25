@@ -1,4 +1,4 @@
-code structure:
+code structure of food ordering app:
 /**
  * Header
  *  - Logo
