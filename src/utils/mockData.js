@@ -44,7 +44,7 @@ const restList = [
               "Desserts",
               "Beverages"
             ],
-            "avgRating": 3.8,
+            "avgRating": 3.2,
             "parentId": "2",
             "avgRatingString": "3.8",
             "totalRatingsString": "1K+",
