@@ -15,13 +15,18 @@ const Body = () => {
             "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.351351&lng=77.34024&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
             );
         const jsonResponse = await data.json();
-        // console.log(jsonResponse.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
         //optional chaining
-        setListOfRestaurant(jsonResponse?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        const listOfRestaurantObjectArray = (jsonResponse?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        let resArray = [] ;
+        listOfRestaurantObjectArray.map((res) => {
+            resArray.push(res.info);
+        })    
+        setListOfRestaurant(resArray);
     }
 
+    //conditional rendering
     if(listOfRestaurant.length === 0){
-        return <h1>Loading....</h1> 
+        return <Shimmer /> 
     }
 
     return ( 
@@ -31,7 +36,7 @@ const Body = () => {
             onClick={() => {
                 //filter logic
                 const updatedRestList = listOfRestaurant.filter(
-                    (res) => res.avgRating > 3.5
+                    (res) => res.avgRating > 4
                 )
                 console.log(updatedRestList)
                 setListOfRestaurant(updatedRestList);
@@ -43,7 +48,7 @@ const Body = () => {
          <div className="res-container">
              {
                  listOfRestaurant.map((restaurent) => (
-                   <RestaurantCard key={restaurent.info.id} restData = {restaurent.info} />
+                   <RestaurantCard key={restaurent.id} restData = {restaurent} />
                  ))
              }
          </div>

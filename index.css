@@ -18,8 +18,12 @@
     list-style-type: none;
 }
 
-.nav-items > ul >li {
+.nav-items > ul >li, .login {
     margin: 20px 20px 0px 0px;
+}
+
+.login{
+  cursor: pointer;
 }
 
 .res-container {
@@ -48,4 +52,27 @@
     padding:4px;
     margin:4px;
     cursor: pointer;
+}
+
+.shimmer-container {
+ display: flex;
+}
+
+.shimmer-card {
+    width:200px;
+    height:450px;
+    border:1px solid lightgrey;
+    padding: 7px;
+    margin:5px;
+}
+
+.shimmer-card-upper {
+   height: 150px;
+   background-color: lightgray;
+}
+
+.shimmer-card-lower {
+    height: 290px;
+    background-color: lightgrey;
+    margin-top: 7px;
 }
