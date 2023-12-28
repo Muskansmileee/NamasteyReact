@@ -76,3 +76,21 @@
     background-color: lightgrey;
     margin-top: 7px;
 }
+
+.filter {
+    display: flex;
+}
+
+.search {
+    padding:4px;
+    margin:4px;
+    padding-left: 0px;
+}
+
+.search-box {
+    margin-right: 5px;
+}
+
+.search-btn {
+    cursor: pointer;
+}
