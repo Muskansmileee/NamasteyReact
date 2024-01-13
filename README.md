@@ -15,3 +15,5 @@ code structure of food ordering app:
  *  - Address
  *  - Contact
  */
+
+ // https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/ 
