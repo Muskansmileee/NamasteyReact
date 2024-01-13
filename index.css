@@ -94,3 +94,23 @@
 .search-btn {
     cursor: pointer;
 }
+
+.menu-item-container {
+ display: flex;
+ margin-bottom: 10px;
+ border-bottom: 1px solid lightgray;
+ padding-bottom: 10px;
+}
+
+.menu-item {
+    list-style: none;
+    width:400px
+}
+
+.menu-img {
+    width:120px;
+}
+
+.price-font {
+    font-size: small;
+}
