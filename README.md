@@ -17,3 +17,4 @@ code structure of food ordering app:
  */
 
  // https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/ 
+ //search github user api for users . click get a user , then call the url given with any name as params.
