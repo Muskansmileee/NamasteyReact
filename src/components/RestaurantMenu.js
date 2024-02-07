@@ -2,33 +2,22 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { MENU_API, MENU_ITEM_IMAGE } from "../utils/contants";
 import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState([]);
-
   const {resId} = useParams();
-  
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const data = await fetch( MENU_API + resId);
-    const json = await data.json();
-    console.log(json.data);
-    setResInfo(json?.data);
-  };
+  const resInfo = useRestaurantMenu(resId); //custom hook
 
   if (resInfo.length === 0) return <Shimmer />;
 
   const { name, cuisines, costForTwoMessage } =
     resInfo?.cards?.[0]?.card?.card?.info || {}; // we cannot destructure undefined or empty array , becoz code is trying to find name inside null or empty array
-
   const { itemCards } =
-    resInfo?.cards?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card
-      ?.card || {};
+    resInfo?.cards?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card?.card?.categories?.[0] || 
+    resInfo?.cards?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card?.card || 
+    {};
 
-  console.log(itemCards);
+  //console.log(itemCards);
 
   return (
     <div className="menu">

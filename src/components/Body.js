@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import restList from "../utils/mockData";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -36,6 +37,11 @@ const Body = () => {
                             if(resName.includes(searchText))return res;
                       })       
     setfilteredRestaurant(filterArray);
+  }
+
+  const onlineStatus = useOnlineStatus();
+  if(onlineStatus == false) {
+     return <h1>Looks like you're offline!! Please check your internet connection.</h1>
   }
 
   //conditional rendering
