@@ -118,3 +118,12 @@
 .profile_img{
     width:50px;
 }
+
+.promoted{
+    position: absolute;
+    color: white;
+    background-color: black;
+    padding: 2px;
+    margin-left: 5px;
+    border-radius: 8px;
+}

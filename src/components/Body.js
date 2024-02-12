@@ -4,11 +4,14 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import restList from "../utils/mockData";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { withPromotedLabel } from "./RestaurantCard";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [filteredRestaurant, setfilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -18,7 +21,8 @@ const Body = () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.351351&lng=77.34024&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
-    const jsonResponse = await data.json();
+    const jsonResponse = await data.json();  
+    //const jsonResponse = restList; // uncomment this when using promoted feature
     //optional chaining
     const listOfRestaurantObjectArray =
       jsonResponse?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
@@ -27,8 +31,9 @@ const Body = () => {
     listOfRestaurantObjectArray.map((res) => {
       resArray.push(res.info);
     });
-    setListOfRestaurant(resArray);
-    setfilteredRestaurant(resArray);
+    setListOfRestaurant(resArray); 
+    console.log(listOfRestaurant);
+    setfilteredRestaurant(resArray); 
   };
 
   const searchRestaurant = () => {
@@ -91,7 +96,12 @@ const Body = () => {
         <Link 
             key={restaurent.id}
             to={"/restaurants/" + restaurent.id}>  
-           <RestaurantCard  restData={restaurent} /> 
+
+            {/* If restaurent is promoted then add promoted label to it */
+                 restaurent.promoted ? <RestaurantCardPromoted restData={restaurent}/> 
+                                     : <RestaurantCard  restData={restaurent} /> 
+            }     
+           
         </Link>
         ))}
       </div>

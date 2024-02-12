@@ -18,3 +18,5 @@ code structure of food ordering app:
 
  // https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/ 
  //search github user api for users . click get a user , then call the url given with any name as params.
+
+ //since "promoted" feature is gone , use mockdata for this feature, change jsonResponse to resList to see it.
