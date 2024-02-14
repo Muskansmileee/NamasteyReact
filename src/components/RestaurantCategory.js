@@ -4,10 +4,11 @@ import ItemList from "./ItemList";
 const RestaurantCategory = (props) => {
   const { title } = props.menuData;
   const { itemCards } = props.menuData;
-  const [ showMenu, setShowMenu ] = useState(false);
+  const [ openMenu , setOpenMenu ] = useState(true);
 
   const handelClick = () => {
-    showMenu ? setShowMenu(false) : setShowMenu(true);
+    openMenu ? props.setShowIndexAtChild() :  props.setShowIndexAtChild(true);
+    setOpenMenu(!openMenu);
   }
 
   return (
@@ -20,7 +21,7 @@ const RestaurantCategory = (props) => {
         </div>
           {/* Accordian body */}
           { 
-             showMenu && <ItemList data = {itemCards}/>
+             props.showMenu && <ItemList data = {itemCards}/>
           }
       </div>
     </div>

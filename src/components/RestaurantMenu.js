@@ -8,7 +8,9 @@ import RestaurantCategory from "./RestaurantCategory";
 const RestaurantMenu = () => {
   const {resId} = useParams();
   const resInfo = useRestaurantMenu(resId); //custom hook
+  const [ showIndex, setShowIndex ] = useState(0);
 
+  
   if (resInfo.length === 0) return <Shimmer />;
 
   const { name, cuisines, costForTwoMessage } =
@@ -46,9 +48,16 @@ const RestaurantMenu = () => {
         ))} 
       </ul> */}
 
-     { categories.map((category) => (
+     { categories.map((category, index) => (
       <div key={category.card.card.title}>
-          <RestaurantCategory menuData = {category?.card?.card}/>
+          <RestaurantCategory 
+           menuData = {category?.card?.card}
+           key={category.card.card.title} 
+           showMenu = {index == showIndex ? true : false}
+           setShowIndexAtChild = {(collapseALL) => {
+            collapseALL ? setShowIndex(null) : setShowIndex(index)
+           }}
+           />
       </div>
      ))}
 
