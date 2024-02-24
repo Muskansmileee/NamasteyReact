@@ -42,8 +42,11 @@ text-decoration: none;
     padding: 7px;
     background: lightgray;
     margin:5px;
+    border-radius: 6px;
 }
-
+.res-details{
+    color:black;
+}
 .res-card:hover {
     border: 1px solid black;
     cursor: pointer;
@@ -52,6 +55,7 @@ text-decoration: none;
 .res-image {
     width: 100%;
     height: 180px;
+    border-radius: 6px;
 }
 
 .filter-btn {
@@ -186,4 +190,7 @@ text-decoration: none;
     border-radius: 6px;
     color: green;
     background-color: white;
+}
+.changeUserName{
+    border:1px solid black;
 }

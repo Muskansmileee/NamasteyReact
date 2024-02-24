@@ -1,10 +1,11 @@
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import restList from "../utils/mockData";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { withPromotedLabel } from "./RestaurantCard";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -12,7 +13,8 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
-
+  const userContextData = useContext(UserContext);
+  
   useEffect(() => {
     fetchData();
   }, []);
@@ -25,7 +27,7 @@ const Body = () => {
     //const jsonResponse = restList; // uncomment this when using promoted feature
     //optional chaining
     const listOfRestaurantObjectArray =
-      jsonResponse?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+      jsonResponse?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     let resArray = [];
     listOfRestaurantObjectArray.map((res) => {
@@ -77,19 +79,29 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            //filter logic
-            const updatedRestList = listOfRestaurant.filter(
-              (res) => res.avgRating > 4
-            );
-            console.log(updatedRestList);
-            setfilteredRestaurant(updatedRestList);
-          }}
-        >
-          Top Rated restaurants.
-        </button>
+        <div>
+          <button
+            className="filter-btn"
+            onClick={() => {
+              //filter logic
+              const updatedRestList = listOfRestaurant.filter(
+                (res) => res.avgRating > 4
+              );
+              console.log(updatedRestList);
+              setfilteredRestaurant(updatedRestList);
+            }}
+          >
+            Top Rated restaurants.
+          </button>
+        </div>
+        <div>
+          <label>UserName:</label>
+          <input className="changeUserName" 
+          value = {userContextData.loggedInUser}
+          onChange = {(e) => {
+            userContextData.setUserNameFunction(e.target.value);
+          }}></input>  
+        </div>
       </div>
       <div className="res-container">
         {filteredRestaurant.map((restaurent) => (
