@@ -5,9 +5,9 @@ import { addItem } from "../utils/cartSlice";
 const ItemList = ({data}) => {
 
   const dispatch = useDispatch();
-  const handelAddItem = () => {
+  const handelAddItem = (item) => {
    // Dispatch an action
-   dispatch(addItem("Pizza"));     //action.payload is pizza
+   dispatch(addItem(item));     //action.payload is item 
   }
 
   return (
@@ -23,7 +23,7 @@ const ItemList = ({data}) => {
               <img className="menu-img" src={CDN_URL + item.card.info.imageId}/>
 
               <button className="add-button"
-              onClick={handelAddItem}
+              onClick={() => handelAddItem(item)}
               >Add +</button>
 
             </div>

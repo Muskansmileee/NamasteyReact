@@ -194,3 +194,27 @@ text-decoration: none;
 .changeUserName{
     border:1px solid black;
 }
+
+.cart-container{
+    width: 50%;
+    margin: auto;
+}
+.cart-heading{
+    text-align: center;
+}
+.empty-cart-heading{
+    text-align: center;
+    font-weight: 500;;
+}
+.cartList{
+    width: 30%;
+    margin: auto;
+}
+.clear-cart{
+    float: right;
+    margin-top: -40px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 8px;
+}
