@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/contants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [buttonName, setbuttonName] = useState("Login");
@@ -13,6 +14,11 @@ const Header = () => {
     if (buttonName == "Login") setbuttonName("Logout");
     else setbuttonName("Login");
   };
+
+  const cartItems = useSelector((store) => {    //ye h appStore 
+    return store.cart.items;                    // appStore ka cart ka item , this cart name is what writeen in appStore.
+  })                                            //subscribing small portion of store.
+  console.log(cartItems);
 
   return (
     <div className="header">
@@ -29,7 +35,9 @@ const Header = () => {
             <Link to="/contact">Contact us</Link></li>
             <li>
             <Link to="/grocery">Grocery</Link></li>
-          <li>Cart</li>
+
+          <li>Cart ({cartItems.length} items)</li>
+
           <button
             className="login"
             onClick={() => {

@@ -10,7 +10,8 @@ const RestaurantMenu = () => {
   const resInfo = useRestaurantMenu(resId); //custom hook
   const [ showIndex, setShowIndex ] = useState(0);
 
-  
+ // console.log(resInfo);
+
   if (resInfo.length === 0) return <Shimmer />;
 
   const { name, cuisines, costForTwoMessage } =
