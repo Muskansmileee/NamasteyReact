@@ -21,7 +21,7 @@ const Cart = () => {
           onClick={handelClearCart}>Clear Cart</button>
           <div>
                { cartItems.map((cartItem) => (
-                   <div className="flex" key={cartItem.card.info.id}>
+                   <div className="flex" key={cartItem.card.info.id} data-testid="cartItems">
                     <div className="menu-body-item">
                         <span> {cartItem.card.info.name} </span>
                         <span>₹ {cartItem.card.info.price/100}</span>

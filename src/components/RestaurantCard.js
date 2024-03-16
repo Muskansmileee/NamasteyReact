@@ -3,10 +3,10 @@ import { CDN_URL } from "../utils/contants";
 const RestaurantCard = (props) => {
     const { restData } = props;
     const { name, cloudinaryImageId, cuisines, avgRating, costForTwo, sla } = restData;   //destructure
-   // console.log(restData)
+    //console.log(restData)
     
     return (
-        <div className="res-card">
+        <div className="res-card" data-testid="resCard">
             
             <div className="res-image-container">
                 <img className="res-image" 

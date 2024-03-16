@@ -218,3 +218,7 @@ text-decoration: none;
     padding: 5px;
     border-radius: 8px;
 }
+.form-input{
+    padding: 2px;
+    margin: 2px;
+}

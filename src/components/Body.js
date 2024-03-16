@@ -62,6 +62,7 @@ const Body = () => {
         <div className="search">
           <input
             type="text"
+            data-testid="searchInput"
             className="search-box"
             value={searchText}
             onChange={(e) => {
@@ -85,13 +86,13 @@ const Body = () => {
             onClick={() => {
               //filter logic
               const updatedRestList = listOfRestaurant.filter(
-                (res) => res.avgRating > 4
+                (res) => res.avgRating > 4.1
               );
-              console.log(updatedRestList);
+              //console.log(updatedRestList);
               setfilteredRestaurant(updatedRestList);
             }}
           >
-            Top Rated restaurants.
+            Top Rated restaurants
           </button>
         </div>
         <div>

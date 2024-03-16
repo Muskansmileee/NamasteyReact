@@ -13,7 +13,7 @@ const ItemList = ({data}) => {
   return (
     <div className="menu-body">
         {data.map((item) => (
-          <div className="flex" key={item.card.info.id}>
+          <div className="flex" key={item.card.info.id} data-testid="resItems">
             <div className="menu-body-item">
                 <span> {item.card.info.name} </span>
                 <span>₹ {item.card.info.price/100}</span>

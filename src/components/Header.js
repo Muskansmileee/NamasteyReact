@@ -18,7 +18,7 @@ const Header = () => {
   const cartItems = useSelector((store) => {    //ye h appStore 
     return store.cart.items;                    // appStore ka cart ka item , this cart name is what writeen in appStore.
   })                                            //subscribing small portion of store.
-  console.log(cartItems);
+ //console.log(cartItems);
 
   return (
     <div className="header">
